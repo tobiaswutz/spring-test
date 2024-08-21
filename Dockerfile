@@ -1,14 +1,23 @@
-# Verwende ein leichtgewichtiges JDK-Image als Basis
+# Verwende ein leichtgewichtiges JDK-Image als Basis, das Java 19 enthält
 FROM openjdk:19-jdk-slim
 
 # Setze das Arbeitsverzeichnis im Container
 WORKDIR /app
 
-# Kopiere die gesamte Anwendung in das Arbeitsverzeichnis des Containers
-COPY . .
+# Kopiere die Gradle Wrapper-Dateien und die Projektdateien
+COPY gradlew .
+COPY gradle/ gradle/
+COPY build.gradle .
+COPY settings.gradle .
 
-# Baue die Anwendung mit Gradle
-RUN ./gradlew clean build -x check -x test
+# Kopiere den Rest der Anwendung
+COPY src/ src/
+
+# Installiere die Abhängigkeiten und baue die Anwendung
+RUN ./gradlew clean build -x test
+
+# Überprüfe, ob die JAR-Datei existiert
+RUN ls build/libs/
 
 # Exponiere den Standardport, den Spring Boot verwendet (normalerweise 8080)
 EXPOSE 8080
