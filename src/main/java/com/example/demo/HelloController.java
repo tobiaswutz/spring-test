@@ -11,7 +11,7 @@ public class HelloController {
   private static final Logger logger = LoggerFactory.getLogger(HelloController.class);
   private int callCount = 0;
 
-  @GetMapping("/hello/callCount")
+  @GetMapping("/")
   public String getCallCount() {
     callCount++;
     // Logge die Anzahl der Aufrufe
