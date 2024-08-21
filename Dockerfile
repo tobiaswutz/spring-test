@@ -23,4 +23,4 @@ RUN ls build/libs/
 EXPOSE 8080
 
 # Führe die erzeugte JAR-Datei aus
-CMD ["java", "-jar", "build/libs/spring-test-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "build/libs/demo-0.0.1-SNAPSHOT.jar"]
