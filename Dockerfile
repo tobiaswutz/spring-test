@@ -14,4 +14,4 @@ RUN ./gradlew clean build -x check -x test
 EXPOSE 8080
 
 # Führe die erzeugte JAR-Datei aus
-CMD ["java", "-jar", "build/libs/myapp-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "build/libs/spring-test-0.0.1-SNAPSHOT.jar"]
